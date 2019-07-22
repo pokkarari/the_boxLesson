@@ -27,6 +27,58 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    //右(>)ボタンを押した
+    public void PushButtonRight()
+    {
+        wallNo++; //方向を1つ右に
+        //「左」の1つ右は「前」
+        if(wallNo > WALL_LEFT)
+        {
+            wallNo = WALL_FRONT;
+        }
+
+        DisplayWall(); //壁表示の更新
+    }
+
+
+    //左(>)ボタンを押した
+    public void PushButtonLeft()
+    {
+        wallNo--; //方向を1つ左に
+        //「前」の1つ左は「左」
+        if (wallNo > WALL_LEFT)
+        {
+            wallNo = WALL_FRONT;
+        }
+
+        DisplayWall(); //壁表示の更新
+    }
+
+    //向いている方向の壁を表示　
+    //localPositionはピポット（基準位置）の左表を表す
+    //カメラを移動する感じ。-1000,-2000,-3000と切り替わっていく
+    void DisplayWall()
+    {
+        switch (wallNo)
+        {
+            case WALL_FRONT: //前
+                panelWalls.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                break;
+            case WALL_RIGHT: //右
+                panelWalls.transform.localPosition = new Vector3(-1000.0f, 0.0f, 0.0f);
+                break;
+            case WALL_BACK: //後
+                panelWalls.transform.localPosition = new Vector3(-2000.0f, 0.0f, 0.0f);
+                break;
+            case WALL_LEFT: //左
+                panelWalls.transform.localPosition = new Vector3(-3000.0f, 0.0f, 0.0f);
+                break;
+
+        }
+    }
+
+
 }
