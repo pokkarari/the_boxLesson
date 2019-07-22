@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //【ここから壁の定義】
     //定数定義：壁方向
     public const int WALL_FRONT = 1; //前
     public const int WALL_RIGHT = 2; //右
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     //向いている方向の壁を表示　
     //localPositionはピポット（基準位置）の左表を表す
-    //カメラを移動する感じ。-1000,-2000,-3000と切り替わっていく
+    //カメラを移動する感じ。実際はパネルの上の壁CanvasUL-1000,-2000,-3000と切り替わっていく
     void DisplayWall()
     {
         switch (wallNo)
