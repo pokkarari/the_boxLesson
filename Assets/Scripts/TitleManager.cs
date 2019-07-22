@@ -19,7 +19,8 @@ public class TitleManager : MonoBehaviour
 
     public void PushStartButton()
     {
-        //SceneManagerクラスのLoadSceneメソッドを呼び出し、GameSceneを読み込んでいる
+        //SceneManagerクラスのLoadSceneメソッドを呼び出して、
+        //GameSceneを読み込んでいる
         SceneManager.LoadScene("GameScene");
     }
 
