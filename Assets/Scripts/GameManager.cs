@@ -40,15 +40,6 @@ public class GameManager : MonoBehaviour
     private int wallNo;                 //現在の向いている方向
 
 
-
-
-
-
-
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {

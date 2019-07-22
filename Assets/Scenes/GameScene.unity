@@ -1404,8 +1404,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelWalls: {fileID: 365348249}
+  buttonHammer: {fileID: 298601320}
+  imageHammerIcon: {fileID: 190391897}
   buttonMessage: {fileID: 1962064596}
   buttonMessageText: {fileID: 2102394185}
+  buttonLamp:
+  - {fileID: 57178428}
+  - {fileID: 323486387}
+  - {fileID: 1308658072}
+  buttonPicture:
+  - {fileID: 21300000, guid: e37159e743818481ba5980a57ce7f9c2, type: 3}
+  - {fileID: 21300000, guid: aabcac814135c4acaa096ff490736fe3, type: 3}
+  - {fileID: 21300000, guid: 605b5ff082f644706afc7cdd10d2e4b0, type: 3}
+  - {fileID: 21300000, guid: 693ed27c75fa44b628cb5da05e1b94cd, type: 3}
+  hammerPicture: {fileID: 21300000, guid: f6ee9399e62164f84bd51adc929abf1b, type: 3}
 --- !u!4 &813270807
 Transform:
   m_ObjectHideFlags: 0
