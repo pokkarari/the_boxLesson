@@ -49,9 +49,9 @@ public class GameManager : MonoBehaviour
     {
         wallNo--; //方向を1つ左に
         //「前」の1つ左は「左」
-        if (wallNo > WALL_LEFT)
+        if (wallNo < WALL_FRONT)
         {
-            wallNo = WALL_FRONT;
+            wallNo = WALL_LEFT;
         }
 
         DisplayWall(); //壁表示の更新
