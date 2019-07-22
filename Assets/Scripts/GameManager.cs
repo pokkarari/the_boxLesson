@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     private int wallNo;          //現在の向いている方向
 
 
+    //【ここからメッセージボタンの定義】
+    public GameObject buttonMessage; //ボタン：メッセージ
+    public GameObject buttonMessageText;//メッセージテキスト
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +37,24 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //メモをタップ
+    public void PushButtonMemo()
+    {
+        DisplayMessage("エッフェル塔と書いてある");
+
+    }
+
+    //メッセージをタップ
+    public void PushButtonMessage()
+    {
+        //メッセージを消す
+        buttonMessage.SetActive(false);  
+    }
+
+
+
+
+    //左右への移動スクリプト
     //右(>)ボタンを押した
     public void PushButtonRight()
     {
@@ -58,9 +82,21 @@ public class GameManager : MonoBehaviour
         DisplayWall(); //壁表示の更新
     }
 
+
+    //メッセージの表示
+    void DisplayMessage(string mes)
+    {
+        buttonMessage.SetActive(true);
+        buttonMessageText.GetComponent<Text>().text = mes;
+    }
+
+
+
+
     //向いている方向の壁を表示　
     //localPositionはピポット（基準位置）の左表を表す
-    //カメラを移動する感じ。実際はパネルの上の壁CanvasUL-1000,-2000,-3000と切り替わっていく
+    //カメラを移動する感じ。実際はパネルの上の壁CanvasGameのPanelWallsが
+    //-1000,-2000,-3000と切り替わっていく
     void DisplayWall()
     {
         switch (wallNo)
