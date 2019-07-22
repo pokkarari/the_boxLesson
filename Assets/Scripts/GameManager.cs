@@ -7,21 +7,45 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //【ここから壁の定義】
     //定数定義：壁方向
-    public const int WALL_FRONT = 1; //前
-    public const int WALL_RIGHT = 2; //右
-    public const int WALL_BACK = 3; //後
-    public const int WALL_LEFT = 4; //左
-
-    public GameObject panelWalls; //壁全体
-
-    private int wallNo;          //現在の向いている方向
+    public const int WALL_FRONT = 1;    //前
+    public const int WALL_RIGHT = 2;    //右
+    public const int WALL_BACK = 3;     //後
+    public const int WALL_LEFT = 4;     //左
 
 
-    //【ここからメッセージボタンの定義】
-    public GameObject buttonMessage; //ボタン：メッセージ
+    //定数定義：ボタンカラー
+    public const int COLOR_GREEN = 0;   //緑
+    public const int COLOR_RED = 1;     //赤
+    public const int COLOR_BLUE = 2;    //緑
+    public const int COLOR_WHITE = 3;   //白
+
+
+    public GameObject panelWalls;       //壁全体
+
+    public GameObject buttonHammer;     //ボタン：トンカチ
+    public GameObject imageHammerIcon;  //アイコン；トンカチ
+
+  
+    public GameObject buttonMessage;    //ボタン：メッセージ
     public GameObject buttonMessageText;//メッセージテキスト
+
+    public GameObject[] buttonLamp = new GameObject[3];//ボタン：金庫
+    public Sprite[] buttonPicture = new Sprite[4]; //ボタンの絵
+    public Sprite　hammerPicture; //トンカチの絵
+
+
+
+
+    private int wallNo;                 //現在の向いている方向
+
+
+
+
+
+
+
+
 
 
 
