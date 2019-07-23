@@ -35,15 +35,21 @@ public class GameManager : MonoBehaviour
     public Sprite　hammerPicture; //トンカチの絵
 
 
-
-
     private int wallNo;                 //現在の向いている方向
+    private bool doseHavaHammmer;       //トンカチを持っているか？
+    private int[] buttonColor = new int[3]; //金庫のボタン
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         wallNo = WALL_FRONT;      //スタート時点では前を向く
+        doseHavaHammmer = false;  //トンカチは「持っていない」
+
+        buttonColor[0] = COLOR_GREEN; //ボタン1の色は「緑」
+        buttonColor[1] = COLOR_RED;  //ボタン2の色は「赤」
+        buttonColor[2] = COLOR_BLUE; //ボタン3の色は「青」
     }
 
     // Update is called once per frame
@@ -58,6 +64,13 @@ public class GameManager : MonoBehaviour
         DisplayMessage("エッフェル塔と書いてある");
 
     }
+
+    //トンカチの絵をタップ
+    public void PushButtonHammer()
+    {
+        buttonHammer.SetActive(false);
+    }
+
 
     //メッセージをタップ
     public void PushButtonMessage()
@@ -129,6 +142,51 @@ public class GameManager : MonoBehaviour
                 panelWalls.transform.localPosition = new Vector3(-3000.0f, 0.0f, 0.0f);
                 break;
 
+        }
+    }
+
+
+    //金庫のボタン1をタップ
+    public void PushButtonLamp1()
+    {
+        ChangButtonColor(0);
+    }
+    //金庫のボタン2をタップ
+    public void PushButtonLamp2()
+    {
+        ChangButtonColor(1);
+    }
+    //金庫のボタン3をタップ
+    public void PushButtonLamp3()
+    {
+        ChangButtonColor(2);
+    }
+
+    //金庫のボタンの色を変更
+    void ChangButtonColor (int buttonNo)
+    {
+        buttonColor[buttonNo]++;
+        //「白」のときにボタンを押したら「緑」
+        if(buttonColor[buttonNo] > COLOR_WHITE)
+        {
+            buttonColor[buttonNo] = COLOR_GREEN;
+        }
+
+        //ボタンの画像を変更
+        buttonLamp[buttonNo].GetComponent <Image>().sprite =
+            buttonPicture[buttonColor[buttonNo]];
+
+        //ボタンの色順をチェック
+        if((buttonColor[0] == COLOR_BLUE) && (buttonColor[1] == COLOR_WHITE) && (buttonColor[2] == COLOR_RED)){
+            //まだトンカチ持っていない？
+            if(doseHavaHammmer == false)
+            {
+                DisplayMessage("金庫にトンカチが入っていた");
+                buttonHammer.SetActive(true); //トンカチの絵を表示
+                imageHammerIcon.GetComponent<Image>().sprite = hammerPicture;
+
+                doseHavaHammmer = true;
+            }
         }
     }
 
