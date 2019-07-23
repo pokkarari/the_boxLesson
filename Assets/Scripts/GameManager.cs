@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -65,6 +66,23 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    //ボックスをタップ
+    public void PushButtonBox ()
+    {
+        if (doseHaveKey == false)
+        {
+            //鍵がかかっている
+            DisplayMessage ("鍵がかかっている");
+        }
+        else
+        {
+            //鍵を持っている
+            SceneManager.LoadScene("ClearScene");
+        }
+    }
+
+
 
     //メモをタップ
     public void PushButtonMemo()
@@ -132,6 +150,7 @@ public class GameManager : MonoBehaviour
         }
 
         DisplayWall(); //壁表示の更新
+        ClearButtons(); //いらないものを消す
     }
 
 
@@ -146,6 +165,16 @@ public class GameManager : MonoBehaviour
         }
 
         DisplayWall(); //壁表示の更新
+        ClearButtons(); //いらないものを消す
+    }
+
+
+    //各種表示をクリアする
+    void ClearButtons()
+    {
+        buttonHammer.SetActive(false);
+        buttonKey.SetActive(false);
+        buttonMessage.SetActive(false);
     }
 
 
