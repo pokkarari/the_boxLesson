@@ -24,19 +24,26 @@ public class GameManager : MonoBehaviour
     public GameObject panelWalls;       //壁全体
 
     public GameObject buttonHammer;     //ボタン：トンカチ
-    public GameObject imageHammerIcon;  //アイコン；トンカチ
+    public GameObject buttonKey;        //ボタン：鍵
 
+    public GameObject imageHammerIcon;  //アイコン；トンカチ
+    public GameObject imageKeyIcon;        //アイコン：鍵
+
+    public GameObject buttonPig;        //ボタン：豚の貯金箱
   
     public GameObject buttonMessage;    //ボタン：メッセージ
     public GameObject buttonMessageText;//メッセージテキスト
 
     public GameObject[] buttonLamp = new GameObject[3];//ボタン：金庫
-    public Sprite[] buttonPicture = new Sprite[4]; //ボタンの絵
-    public Sprite　hammerPicture; //トンカチの絵
 
+    public Sprite[] buttonPicture = new Sprite[4]; //ボタンの絵
+
+    public Sprite　hammerPicture; //トンカチの絵
+    public Sprite keyPicture;     //鍵の絵
 
     private int wallNo;                 //現在の向いている方向
     private bool doseHavaHammmer;       //トンカチを持っているか？
+    private bool doseHaveKey;           //鍵を持っているか？
     private int[] buttonColor = new int[3]; //金庫のボタン
 
 
@@ -46,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         wallNo = WALL_FRONT;      //スタート時点では前を向く
         doseHavaHammmer = false;  //トンカチは「持っていない」
+        doseHaveKey = false;       //鍵は「持っていない」
 
         buttonColor[0] = COLOR_GREEN; //ボタン1の色は「緑」
         buttonColor[1] = COLOR_RED;  //ボタン2の色は「赤」
@@ -65,10 +73,40 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PushButtonPig()
+    {
+        //トンカチを持っているのか？
+        if(doseHavaHammmer == false)
+        {
+            //トンカチを持っていない
+            DisplayMessage("素手では割れない");
+        }
+        else
+        {
+            //トンカチを持っている
+            DisplayMessage("貯金箱が割れ中から鍵が出てきた");
+            buttonPig.SetActive(false); //貯金箱を消す
+            buttonKey.SetActive(true);  //鍵の絵を表示
+            imageKeyIcon.GetComponent<Image>().sprite = keyPicture;
+
+            doseHaveKey = true;
+
+        }
+    }
+
+
+
+
     //トンカチの絵をタップ
     public void PushButtonHammer()
     {
         buttonHammer.SetActive(false);
+    }
+
+    //鍵の絵をタップ
+    public void PushButtonKey()
+    {
+        buttonKey.SetActive(false);
     }
 
 
